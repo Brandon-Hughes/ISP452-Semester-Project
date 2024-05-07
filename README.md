@@ -18,5 +18,6 @@
 > logging help
 
 # How to Run:
-- python NetScanTool.py 
+- python NetScanTool.py (Windows)
+- python3 NetScanTool.py (Linux/MacOS)
 
