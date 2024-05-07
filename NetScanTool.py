@@ -4,7 +4,6 @@ import logging
 logging.basicConfig(filename='nmap_scan.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
-    print("Script started")
     scanner = nmap.PortScanner()
 
     while True:
@@ -61,13 +60,15 @@ def main():
             print(f"An unexpected error occurred: {str(e)}")
 
 def handle_scan_selection():
-    scan_types = {'1': '-sn', '2': '-sS', '3': '-sT'}
+    scan_types = {'1': '-sn', '2': '-sS', '3': '-sT', '4': '-sU', '5': '-sX'}
     while True:
         print("Please choose the type of scan you want to perform:")
         print("1. Ping Scan - Just checks if the host is up without scanning ports.")
         print("2. SYN Scan - Performs a quick stealth scan using TCP SYN packets.")
-        print("3. Connect Scan - Completes the TCP handshake to check open ports.")
-        scan_choice = input("Enter your choice (1-3): ")
+        print("3. TCP Scan - Completes the TCP handshake to check open ports.")
+        print("4. UDP Scan - Completes the UDP handshake to check open ports.")
+        print("5. Xmas Scan - Sets the FIN, PSH, and URG flags to gauge port status.")
+        scan_choice = input("Enter your choice (1-5): ")
 
         if scan_choice in scan_types:
             return scan_types[scan_choice]
@@ -75,7 +76,7 @@ def handle_scan_selection():
             break
         else:
             logging.warning("User made an invalid scan choice. Prompted to retry.")
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            print("Invalid choice. Please enter 1 - 5.")
 
 def handle_port_selection():
     while True:
