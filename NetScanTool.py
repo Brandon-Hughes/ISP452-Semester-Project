@@ -113,7 +113,7 @@ def print_scan_results(scanner):
             logging.info(proto_info)
             lport = scanner[host][proto].keys()
             for port in lport:
-                port_info = f"Port: {port}\tState: {scanner[host][proto][port]['state']}\n"
+                port_info = f"Port: {port}\tState: {scanner[host][proto][port]['state']}\tService: {scanner[host][proto][port]['name']}\n"
                 results += port_info
                 logging.info(port_info)
     print(results)
